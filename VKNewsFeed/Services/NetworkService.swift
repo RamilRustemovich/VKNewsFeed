@@ -24,7 +24,7 @@ final class NetworkService: Networking {
     func request(path: String, parameters: [String : String], completion: @escaping (Data?, Error?) -> Void) {
         guard let token = authService.token else { return }
         var allParams            = parameters
-        allParams["acces_token"] = token
+        allParams["access_token"] = token
         allParams["v"]           = API.version
         guard let url = self.url(from: path, parameters: allParams) else { return }
         let request = URLRequest(url: url)
