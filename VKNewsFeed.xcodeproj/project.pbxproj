@@ -28,6 +28,7 @@
 		84C78C78236DF3D2008BC06E /* NewsfeedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C78C77236DF3D2008BC06E /* NewsfeedViewController.storyboard */; };
 		84C78C7B236E190F008BC06E /* NewsfeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C78C7A236E190F008BC06E /* NewsfeedCell.swift */; };
 		84C78C7D236E1958008BC06E /* NewsfeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C78C7C236E1957008BC06E /* NewsfeedCell.xib */; };
+		84E31244237052A4001430B4 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E31243237052A4001430B4 /* WebImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		84C78C77236DF3D2008BC06E /* NewsfeedViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewsfeedViewController.storyboard; sourceTree = "<group>"; };
 		84C78C7A236E190F008BC06E /* NewsfeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedCell.swift; sourceTree = "<group>"; };
 		84C78C7C236E1957008BC06E /* NewsfeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsfeedCell.xib; sourceTree = "<group>"; };
+		84E31243237052A4001430B4 /* WebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				842BF1CE2336F36800247794 /* UIViewController + Storyboard.swift */,
+				84E31243237052A4001430B4 /* WebImageView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				844C05C6236D06740020D73A /* NewsfeedRouter.swift in Sources */,
 				8487AAA223382AE300609523 /* NetworkService.swift in Sources */,
 				844C05C7236D06740020D73A /* NewsfeedModels.swift in Sources */,
+				84E31244237052A4001430B4 /* WebImageView.swift in Sources */,
 				844C05BB236CEC680020D73A /* NetworkDataFetcher.swift in Sources */,
 				844C05C5236D06740020D73A /* NewsfeedWorker.swift in Sources */,
 				84082F5E2333DECA00355CDD /* AppDelegate.swift in Sources */,

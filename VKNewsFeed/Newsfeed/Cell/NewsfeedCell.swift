@@ -25,7 +25,7 @@ class NewsfeedCell: UITableViewCell {
     
     static let reuseId = "NewsfeedCell"
     
-    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var iconImageView: WebImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var postLabel: UILabel!
@@ -41,6 +41,7 @@ class NewsfeedCell: UITableViewCell {
     }
     
     func Set(viewModel: FeedCellViewModel) {
+        self.iconImageView.set(imageURL: viewModel.iconUrlString)  
         self.nameLabel.text = viewModel.name
         self.dateLabel.text = viewModel.date
         self.postLabel?.text = viewModel.text
