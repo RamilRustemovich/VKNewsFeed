@@ -10,8 +10,6 @@
 		84082F5E2333DECA00355CDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84082F5D2333DECA00355CDD /* AppDelegate.swift */; };
 		84082F652333DECD00355CDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84082F642333DECD00355CDD /* Assets.xcassets */; };
 		84082F682333DECD00355CDD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84082F662333DECD00355CDD /* LaunchScreen.storyboard */; };
-		842BF1CB2336EF1E00247794 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842BF1CA2336EF1E00247794 /* FeedViewController.swift */; };
-		842BF1CD2336EF4E00247794 /* FeedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842BF1CC2336EF4E00247794 /* FeedViewController.storyboard */; };
 		842BF1CF2336F36800247794 /* UIViewController + Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842BF1CE2336F36800247794 /* UIViewController + Storyboard.swift */; };
 		844C05B9236CE4B40020D73A /* FeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C05B8236CE4B40020D73A /* FeedResponse.swift */; };
 		844C05BB236CEC680020D73A /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C05BA236CEC680020D73A /* NetworkDataFetcher.swift */; };
@@ -38,8 +36,6 @@
 		84082F642333DECD00355CDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84082F672333DECD00355CDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84082F692333DECD00355CDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		842BF1CA2336EF1E00247794 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
-		842BF1CC2336EF4E00247794 /* FeedViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeedViewController.storyboard; sourceTree = "<group>"; };
 		842BF1CE2336F36800247794 /* UIViewController + Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIViewController + Storyboard.swift"; path = "VKNewsFeed/Helpers/UIViewController + Storyboard.swift"; sourceTree = SOURCE_ROOT; };
 		844C05B8236CE4B40020D73A /* FeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedResponse.swift; sourceTree = "<group>"; };
 		844C05BA236CEC680020D73A /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
@@ -93,7 +89,6 @@
 			isa = PBXGroup;
 			children = (
 				84082F5D2333DECA00355CDD /* AppDelegate.swift */,
-				8487AAA52338330D00609523 /* FeedViewController */,
 				844C05BC236D06350020D73A /* Newsfeed */,
 				847F80B72335304B007DA09F /* Auth */,
 				84BA0B9523344FDB00F2F5DD /* Services */,
@@ -143,15 +138,6 @@
 				847F80B523353026007DA09F /* AuthViewController.storyboard */,
 			);
 			path = Auth;
-			sourceTree = "<group>";
-		};
-		8487AAA52338330D00609523 /* FeedViewController */ = {
-			isa = PBXGroup;
-			children = (
-				842BF1CC2336EF4E00247794 /* FeedViewController.storyboard */,
-				842BF1CA2336EF1E00247794 /* FeedViewController.swift */,
-			);
-			path = FeedViewController;
 			sourceTree = "<group>";
 		};
 		84BA0B8F2334478900F2F5DD /* Frameworks */ = {
@@ -247,7 +233,6 @@
 				84C78C78236DF3D2008BC06E /* NewsfeedViewController.storyboard in Resources */,
 				84082F652333DECD00355CDD /* Assets.xcassets in Resources */,
 				84C78C7D236E1958008BC06E /* NewsfeedCell.xib in Resources */,
-				842BF1CD2336EF4E00247794 /* FeedViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,7 +271,6 @@
 				844C05C4236D06740020D73A /* NewsfeedPresenter.swift in Sources */,
 				847F80B42335300E007DA09F /* AuthViewController.swift in Sources */,
 				844C05C6236D06740020D73A /* NewsfeedRouter.swift in Sources */,
-				842BF1CB2336EF1E00247794 /* FeedViewController.swift in Sources */,
 				8487AAA223382AE300609523 /* NetworkService.swift in Sources */,
 				844C05C7236D06740020D73A /* NewsfeedModels.swift in Sources */,
 				844C05BB236CEC680020D73A /* NetworkDataFetcher.swift in Sources */,
