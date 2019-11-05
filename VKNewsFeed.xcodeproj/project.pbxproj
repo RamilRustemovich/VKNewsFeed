@@ -166,8 +166,8 @@
 		84C78C79236E18EF008BC06E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				84C78C7A236E190F008BC06E /* NewsfeedCell.swift */,
 				84C78C7C236E1957008BC06E /* NewsfeedCell.xib */,
+				84C78C7A236E190F008BC06E /* NewsfeedCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
