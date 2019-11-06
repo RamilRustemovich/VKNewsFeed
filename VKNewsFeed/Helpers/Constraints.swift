@@ -9,6 +9,15 @@
 import Foundation
 import UIKit
 
+
+extension NSLayoutConstraint {
+    
+     var activate: Void {
+        self.isActive = true
+        return Void()
+    }
+}
+
 extension UIView {
     
     func fillSuperview(padding: UIEdgeInsets) {
