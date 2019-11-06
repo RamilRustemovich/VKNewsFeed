@@ -19,6 +19,8 @@
 		844C05C7236D06740020D73A /* NewsfeedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C05C0236D06740020D73A /* NewsfeedModels.swift */; };
 		844C05C8236D06740020D73A /* NewsfeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C05C1236D06740020D73A /* NewsfeedViewController.swift */; };
 		844C05C9236D06740020D73A /* NewsfeedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C05C2236D06740020D73A /* NewsfeedInteractor.swift */; };
+		84642E0E2371CA4E00B41CB4 /* NewsfeedCellLayoutCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84642E0D2371CA4E00B41CB4 /* NewsfeedCellLayoutCalculator.swift */; };
+		84642E1023722E1700B41CB4 /* String + Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84642E0F23722E1700B41CB4 /* String + Height.swift */; };
 		847F80B42335300E007DA09F /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F80B32335300E007DA09F /* AuthViewController.swift */; };
 		847F80B623353026007DA09F /* AuthViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847F80B523353026007DA09F /* AuthViewController.storyboard */; };
 		8487AAA223382AE300609523 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487AAA123382AE300609523 /* NetworkService.swift */; };
@@ -46,6 +48,8 @@
 		844C05C0236D06740020D73A /* NewsfeedModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedModels.swift; sourceTree = "<group>"; };
 		844C05C1236D06740020D73A /* NewsfeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedViewController.swift; sourceTree = "<group>"; };
 		844C05C2236D06740020D73A /* NewsfeedInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedInteractor.swift; sourceTree = "<group>"; };
+		84642E0D2371CA4E00B41CB4 /* NewsfeedCellLayoutCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedCellLayoutCalculator.swift; sourceTree = "<group>"; };
+		84642E0F23722E1700B41CB4 /* String + Height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Height.swift"; sourceTree = "<group>"; };
 		847F80B32335300E007DA09F /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		847F80B523353026007DA09F /* AuthViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AuthViewController.storyboard; sourceTree = "<group>"; };
 		8487AAA123382AE300609523 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -107,6 +111,7 @@
 			children = (
 				842BF1CE2336F36800247794 /* UIViewController + Storyboard.swift */,
 				84E31243237052A4001430B4 /* WebImageView.swift */,
+				84642E0F23722E1700B41CB4 /* String + Height.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -168,6 +173,7 @@
 			children = (
 				84C78C7C236E1957008BC06E /* NewsfeedCell.xib */,
 				84C78C7A236E190F008BC06E /* NewsfeedCell.swift */,
+				84642E0D2371CA4E00B41CB4 /* NewsfeedCellLayoutCalculator.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -268,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				844C05B9236CE4B40020D73A /* FeedResponse.swift in Sources */,
+				84642E1023722E1700B41CB4 /* String + Height.swift in Sources */,
 				844C05C8236D06740020D73A /* NewsfeedViewController.swift in Sources */,
 				84BA0B9423344F7100F2F5DD /* AuthService.swift in Sources */,
 				842BF1CF2336F36800247794 /* UIViewController + Storyboard.swift in Sources */,
@@ -276,6 +283,7 @@
 				844C05C6236D06740020D73A /* NewsfeedRouter.swift in Sources */,
 				8487AAA223382AE300609523 /* NetworkService.swift in Sources */,
 				844C05C7236D06740020D73A /* NewsfeedModels.swift in Sources */,
+				84642E0E2371CA4E00B41CB4 /* NewsfeedCellLayoutCalculator.swift in Sources */,
 				84E31244237052A4001430B4 /* WebImageView.swift in Sources */,
 				844C05BB236CEC680020D73A /* NetworkDataFetcher.swift in Sources */,
 				844C05C5236D06740020D73A /* NewsfeedWorker.swift in Sources */,

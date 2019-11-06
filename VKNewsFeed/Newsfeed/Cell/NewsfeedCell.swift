@@ -19,6 +19,14 @@ protocol FeedCellViewModel {
     var shares: String? { get }
     var views: String? { get }
     var photoAttachment: FeedCellPhotoAttachmentViewModel? { get }
+    var sizes: FeedCellSizes { get }
+}
+
+protocol FeedCellSizes {
+    var postLabelFrame: CGRect { get }
+    var attachmentFrame: CGRect { get }
+    var bottomViewFrame: CGRect { get }
+    var totalHeight: CGFloat { get }
 }
 
 protocol FeedCellPhotoAttachmentViewModel {
@@ -42,7 +50,12 @@ class NewsfeedCell: UITableViewCell {
     @IBOutlet weak var commentsLabel: UILabel!
     @IBOutlet weak var sharesLabel: UILabel!
     @IBOutlet weak var viewsLabel: UILabel!
+    @IBOutlet weak var bottomView: UIView!
     
+    override func prepareForReuse() {
+        self.iconImageView.set(imageURL: nil)
+        self.postImageView.set(imageURL: nil)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -65,6 +78,11 @@ class NewsfeedCell: UITableViewCell {
         self.commentsLabel.text = viewModel.comments
         self.sharesLabel.text = viewModel.shares
         self.viewsLabel.text = viewModel.views
+        
+        self.postLabel.frame = viewModel.sizes.postLabelFrame
+        self.postImageView.frame = viewModel.sizes.attachmentFrame
+        self.bottomView.frame = viewModel.sizes.bottomViewFrame
+        
         if let photoAttachment = viewModel.photoAttachment {
             self.postImageView.set(imageURL: photoAttachment.photoUrlString)
             self.postImageView.isHidden = false
