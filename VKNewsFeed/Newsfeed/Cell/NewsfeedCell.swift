@@ -69,7 +69,7 @@ class NewsfeedCell: UITableViewCell {
         self.selectionStyle = .none
     }
     
-    func Set(viewModel: FeedCellViewModel) {
+    func set(viewModel: FeedCellViewModel) {
         self.iconImageView.set(imageURL: viewModel.iconUrlString)  
         self.nameLabel.text = viewModel.name
         self.dateLabel.text = viewModel.date
