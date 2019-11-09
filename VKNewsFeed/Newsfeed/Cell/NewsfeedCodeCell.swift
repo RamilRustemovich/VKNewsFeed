@@ -9,9 +9,15 @@
 import Foundation
 import UIKit
 
+protocol NewsfeedCodeCellDelegate: class {
+    func revealPost(for cell: NewsfeedCodeCell)
+}
+
 final class NewsfeedCodeCell: UITableViewCell {
     
     static let reuseId = "NewsfeedCodeCell"
+    
+    weak var delegate: NewsfeedCodeCellDelegate?
     
     // First Layer
     let cardView: UIView = {
@@ -35,6 +41,16 @@ final class NewsfeedCodeCell: UITableViewCell {
         lbl.numberOfLines = 0
         lbl.font = Constants.postLabelFont
         return lbl
+    }()
+    
+    let moreTextButton: UIButton = {
+        let btn = UIButton()
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        btn.setTitleColor(#colorLiteral(red: 0.4, green: 0.6235294118, blue: 0.831372549, alpha: 1), for: .normal)
+        btn.contentHorizontalAlignment = .left
+        btn.contentVerticalAlignment = .center
+        btn.setTitle("Показать полностью...", for: .normal)
+        return btn
     }()
     
     let postImageView: WebImageView = {
@@ -163,6 +179,10 @@ final class NewsfeedCodeCell: UITableViewCell {
         return label
     }()
     
+    override func prepareForReuse() {
+        self.iconImageView.set(imageURL: nil)
+        self.postImageView.set(imageURL: nil)
+    }
     
     //MARK: init and Set
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -170,6 +190,10 @@ final class NewsfeedCodeCell: UITableViewCell {
         
         self.backgroundColor = .clear
         self.selectionStyle = .none
+        self.moreTextButton.addTarget(self, action: #selector(moreTextButtonTouch), for: .touchUpInside)
+        
+        self.iconImageView.layer.cornerRadius = Constants.topViewHeight / 2
+        self.iconImageView.clipsToBounds = true
         
         self.overlayFirstLayer()
         self.overlaySecondLayer()
@@ -191,10 +215,11 @@ final class NewsfeedCodeCell: UITableViewCell {
         self.commentsLabel.text = viewModel.comments
         self.sharesLabel.text = viewModel.shares
         self.viewsLabel.text = viewModel.views
-
+        // frames:
         self.postLabel.frame = viewModel.sizes.postLabelFrame
         self.postImageView.frame = viewModel.sizes.attachmentFrame
         self.bottomView.frame = viewModel.sizes.bottomViewFrame
+        self.moreTextButton.frame = viewModel.sizes.moreTextButtonFrame
         
         if let photoAttachment = viewModel.photoAttachment {
             self.postImageView.set(imageURL: photoAttachment.photoUrlString)
@@ -224,10 +249,10 @@ final class NewsfeedCodeCell: UITableViewCell {
     
     private func helpInFourthLayer(view: UIView, imageView: UIImageView, label: UILabel) {
         // imageView constraints
-        imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).activate//.isActive = true
-        imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).activate//.isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: Constants.bottomViewViewsIconSize).activate//.isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: Constants.bottomViewViewsIconSize).activate//.isActive = true
+        imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).activate
+        imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).activate
+        imageView.widthAnchor.constraint(equalToConstant: Constants.bottomViewViewsIconSize).activate
+        imageView.heightAnchor.constraint(equalToConstant: Constants.bottomViewViewsIconSize).activate
         
         // label constraints
         label.centerYAnchor.constraint(equalTo: view.centerYAnchor).activate
@@ -282,23 +307,27 @@ final class NewsfeedCodeCell: UITableViewCell {
     private func overlaySecondLayer() {
         self.cardView.addSubview(self.topView)
         self.cardView.addSubview(self.postImageView)
+        self.cardView.addSubview(self.moreTextButton)
         self.cardView.addSubview(self.postLabel)
         self.cardView.addSubview(self.bottomView)
         
         // topView constraint
-        self.topView.topAnchor.constraint(equalTo: self.cardView.topAnchor, constant: 8).isActive = true
-        self.topView.leadingAnchor.constraint(equalTo: self.cardView.leadingAnchor, constant: 8).isActive = true
-        self.topView.trailingAnchor.constraint(equalTo: self.cardView.trailingAnchor, constant: -8).isActive = true
-        self.topView.heightAnchor.constraint(equalToConstant: Constants.topViewHeight).isActive = true
-        
-         // postImageView constraint
-         // postLabel constraint
-         // bottomView constraint
+        self.topView.topAnchor.constraint(equalTo: self.cardView.topAnchor, constant: 8).activate
+        self.topView.leadingAnchor.constraint(equalTo: self.cardView.leadingAnchor, constant: 8).activate
+        self.topView.trailingAnchor.constraint(equalTo: self.cardView.trailingAnchor, constant: -8).activate
+        self.topView.heightAnchor.constraint(equalToConstant: Constants.topViewHeight).activate
+         // postImageView constraint - calculating
+         // postLabel constraint - calculating
+         // bottomView constraint - calculating
     }
-    
     
     private func overlayFirstLayer() {
         self.addSubview(self.cardView)
         self.cardView.fillSuperview(padding: Constants.cardInsets)
+    }
+    
+    
+    @objc private func moreTextButtonTouch() {
+        self.delegate?.revealPost(for: self)
     }
 }

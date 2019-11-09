@@ -37,12 +37,12 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     // MARK: Routing
     
     
-    
     // MARK: View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
         
+        // выбор создания ячейки через Xib или код:
         //self.table.register(UINib(nibName: "NewsfeedCell", bundle: nil), forCellReuseIdentifier: NewsfeedCell.reuseId)
         self.table.register(NewsfeedCodeCell.self, forCellReuseIdentifier: NewsfeedCodeCell.reuseId)
         
@@ -62,17 +62,30 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     
 }
 
+// MARK: NewsfeedCodeCellDelegate
+extension NewsfeedViewController: NewsfeedCodeCellDelegate {
+    func revealPost(for cell: NewsfeedCodeCell) {
+        guard let indexPath = table.indexPath(for: cell) else { return }
+        let cellViewModel = self.feedViewModel.cells[indexPath.row]
+        self.interactor?.makeRequest(request: .revealPostIds(postId: cellViewModel.postId))
+    }
+    
+    
+}
 
+// MARK: UITableViewDelegate, UITableViewDataSource
 extension NewsfeedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.feedViewModel.cells.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: NewsfeedCell.reuseId, for: indexPath) as! NewsfeedCell
+        // выбор создания ячейки через Xib или код:
+        // let cell = tableView.dequeueReusableCell(withIdentifier: NewsfeedCell.reuseId, for: indexPath) as! NewsfeedCell
         let cell = tableView.dequeueReusableCell(withIdentifier: NewsfeedCodeCell.reuseId, for: indexPath) as? NewsfeedCodeCell
         let cellViewModel = self.feedViewModel.cells[indexPath.row]
         cell?.set(viewModel: cellViewModel)
+        cell?.delegate = self
         return cell ?? NewsfeedCodeCell()
     }
     
@@ -82,6 +95,11 @@ extension NewsfeedViewController: UITableViewDelegate, UITableViewDataSource {
 //    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cellViewModel = self.feedViewModel.cells[indexPath.row]
+        return cellViewModel.sizes.totalHeight
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         let cellViewModel = self.feedViewModel.cells[indexPath.row]
         return cellViewModel.sizes.totalHeight
     }
