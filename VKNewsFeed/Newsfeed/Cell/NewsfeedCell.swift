@@ -18,7 +18,7 @@ protocol FeedCellViewModel {
     var comments: String? { get }
     var shares: String? { get }
     var views: String? { get }
-    var photoAttachment: FeedCellPhotoAttachmentViewModel? { get }
+    var photoAttachments: [FeedCellPhotoAttachmentViewModel] { get }
     var sizes: FeedCellSizes { get }
 }
 
@@ -26,6 +26,7 @@ protocol FeedCellSizes {
     var postLabelFrame: CGRect { get }
     var attachmentFrame: CGRect { get }
     var bottomViewFrame: CGRect { get }
+    var moreTextButtonFrame: CGRect { get }
     var totalHeight: CGFloat { get }
 }
 
@@ -69,7 +70,7 @@ class NewsfeedCell: UITableViewCell {
         self.selectionStyle = .none
     }
     
-    func Set(viewModel: FeedCellViewModel) {
+    func set(viewModel: FeedCellViewModel) {
         self.iconImageView.set(imageURL: viewModel.iconUrlString)  
         self.nameLabel.text = viewModel.name
         self.dateLabel.text = viewModel.date
@@ -83,7 +84,7 @@ class NewsfeedCell: UITableViewCell {
         self.postImageView.frame = viewModel.sizes.attachmentFrame
         self.bottomView.frame = viewModel.sizes.bottomViewFrame
         
-        if let photoAttachment = viewModel.photoAttachment {
+        if let photoAttachment = viewModel.photoAttachments.first { // норм функционал делаем через код, поэтому через Xid лишь так
             self.postImageView.set(imageURL: photoAttachment.photoUrlString)
             self.postImageView.isHidden = false
         } else {

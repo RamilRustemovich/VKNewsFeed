@@ -19,6 +19,9 @@
 		844C05C7236D06740020D73A /* NewsfeedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C05C0236D06740020D73A /* NewsfeedModels.swift */; };
 		844C05C8236D06740020D73A /* NewsfeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C05C1236D06740020D73A /* NewsfeedViewController.swift */; };
 		844C05C9236D06740020D73A /* NewsfeedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C05C2236D06740020D73A /* NewsfeedInteractor.swift */; };
+		845DDF832372FFE500D0488D /* NewsfeedCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DDF822372FFE500D0488D /* NewsfeedCodeCell.swift */; };
+		845DDF85237304B600D0488D /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DDF84237304B600D0488D /* Constraints.swift */; };
+		845DDF872373219600D0488D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DDF862373219600D0488D /* Constants.swift */; };
 		84642E0E2371CA4E00B41CB4 /* NewsfeedCellLayoutCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84642E0D2371CA4E00B41CB4 /* NewsfeedCellLayoutCalculator.swift */; };
 		84642E1023722E1700B41CB4 /* String + Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84642E0F23722E1700B41CB4 /* String + Height.swift */; };
 		847F80B42335300E007DA09F /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F80B32335300E007DA09F /* AuthViewController.swift */; };
@@ -48,6 +51,9 @@
 		844C05C0236D06740020D73A /* NewsfeedModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedModels.swift; sourceTree = "<group>"; };
 		844C05C1236D06740020D73A /* NewsfeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedViewController.swift; sourceTree = "<group>"; };
 		844C05C2236D06740020D73A /* NewsfeedInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedInteractor.swift; sourceTree = "<group>"; };
+		845DDF822372FFE500D0488D /* NewsfeedCodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedCodeCell.swift; sourceTree = "<group>"; };
+		845DDF84237304B600D0488D /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
+		845DDF862373219600D0488D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		84642E0D2371CA4E00B41CB4 /* NewsfeedCellLayoutCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedCellLayoutCalculator.swift; sourceTree = "<group>"; };
 		84642E0F23722E1700B41CB4 /* String + Height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Height.swift"; sourceTree = "<group>"; };
 		847F80B32335300E007DA09F /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +118,7 @@
 				842BF1CE2336F36800247794 /* UIViewController + Storyboard.swift */,
 				84E31243237052A4001430B4 /* WebImageView.swift */,
 				84642E0F23722E1700B41CB4 /* String + Height.swift */,
+				845DDF84237304B600D0488D /* Constraints.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -173,7 +180,9 @@
 			children = (
 				84C78C7C236E1957008BC06E /* NewsfeedCell.xib */,
 				84C78C7A236E190F008BC06E /* NewsfeedCell.swift */,
+				845DDF822372FFE500D0488D /* NewsfeedCodeCell.swift */,
 				84642E0D2371CA4E00B41CB4 /* NewsfeedCellLayoutCalculator.swift */,
+				845DDF862373219600D0488D /* Constants.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -284,6 +293,9 @@
 				8487AAA223382AE300609523 /* NetworkService.swift in Sources */,
 				844C05C7236D06740020D73A /* NewsfeedModels.swift in Sources */,
 				84642E0E2371CA4E00B41CB4 /* NewsfeedCellLayoutCalculator.swift in Sources */,
+				845DDF872373219600D0488D /* Constants.swift in Sources */,
+				845DDF832372FFE500D0488D /* NewsfeedCodeCell.swift in Sources */,
+				845DDF85237304B600D0488D /* Constraints.swift in Sources */,
 				84E31244237052A4001430B4 /* WebImageView.swift in Sources */,
 				844C05BB236CEC680020D73A /* NetworkDataFetcher.swift in Sources */,
 				844C05C5236D06740020D73A /* NewsfeedWorker.swift in Sources */,
