@@ -18,7 +18,7 @@ protocol FeedCellViewModel {
     var comments: String? { get }
     var shares: String? { get }
     var views: String? { get }
-    var photoAttachment: FeedCellPhotoAttachmentViewModel? { get }
+    var photoAttachments: [FeedCellPhotoAttachmentViewModel] { get }
     var sizes: FeedCellSizes { get }
 }
 
@@ -84,7 +84,7 @@ class NewsfeedCell: UITableViewCell {
         self.postImageView.frame = viewModel.sizes.attachmentFrame
         self.bottomView.frame = viewModel.sizes.bottomViewFrame
         
-        if let photoAttachment = viewModel.photoAttachment {
+        if let photoAttachment = viewModel.photoAttachments.first { // норм функционал делаем через код, поэтому через Xid лишь так
             self.postImageView.set(imageURL: photoAttachment.photoUrlString)
             self.postImageView.isHidden = false
         } else {
