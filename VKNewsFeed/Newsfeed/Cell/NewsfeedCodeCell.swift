@@ -53,6 +53,8 @@ final class NewsfeedCodeCell: UITableViewCell {
         return btn
     }()
     
+    let galleryCollectionView = GalleryCollectionView()
+    
     let postImageView: WebImageView = {
        let imgView = WebImageView()
         imgView.backgroundColor = #colorLiteral(red: 0.8901960784, green: 0.8980392157, blue: 0.9098039216, alpha: 1)
@@ -217,16 +219,24 @@ final class NewsfeedCodeCell: UITableViewCell {
         self.viewsLabel.text = viewModel.views
         // frames:
         self.postLabel.frame = viewModel.sizes.postLabelFrame
-        self.postImageView.frame = viewModel.sizes.attachmentFrame
         self.bottomView.frame = viewModel.sizes.bottomViewFrame
         self.moreTextButton.frame = viewModel.sizes.moreTextButtonFrame
         
         if let photoAttachment = viewModel.photoAttachments.first, viewModel.photoAttachments.count == 1 {
             self.postImageView.set(imageURL: photoAttachment.photoUrlString)
             self.postImageView.isHidden = false
+            self.galleryCollectionView.isHidden = true
+            self.postImageView.frame = viewModel.sizes.attachmentFrame
+        } else if viewModel.photoAttachments.count > 1 {
+            self.postImageView.isHidden = true
+            self.galleryCollectionView.isHidden = false
+            self.galleryCollectionView.frame = viewModel.sizes.attachmentFrame
+            self.galleryCollectionView.set(photos: viewModel.photoAttachments)
         } else {
             self.postImageView.isHidden = true
+            self.galleryCollectionView.isHidden = true
         }
+        
     }
     
     
@@ -307,6 +317,7 @@ final class NewsfeedCodeCell: UITableViewCell {
     private func overlaySecondLayer() {
         self.cardView.addSubview(self.topView)
         self.cardView.addSubview(self.postImageView)
+        self.cardView.addSubview(self.galleryCollectionView)
         self.cardView.addSubview(self.moreTextButton)
         self.cardView.addSubview(self.postLabel)
         self.cardView.addSubview(self.bottomView)
@@ -317,6 +328,7 @@ final class NewsfeedCodeCell: UITableViewCell {
         self.topView.trailingAnchor.constraint(equalTo: self.cardView.trailingAnchor, constant: -8).activate
         self.topView.heightAnchor.constraint(equalToConstant: Constants.topViewHeight).activate
          // postImageView constraint - calculating
+         //galleryCollectionView constraint - calculating
          // postLabel constraint - calculating
          // bottomView constraint - calculating
     }

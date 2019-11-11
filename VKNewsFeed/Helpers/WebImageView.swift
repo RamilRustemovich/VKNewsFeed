@@ -12,6 +12,7 @@ import UIKit
 class WebImageView: UIImageView {
     
     func set(imageURL: String?) {
+        self.image = nil
         guard let imageURL = imageURL, let url = URL(string: imageURL) else {
             self.image = nil
             return }
