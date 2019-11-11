@@ -18,6 +18,7 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     var router: (NSObjectProtocol & NewsfeedRoutingLogic)?
     private var feedViewModel = FeedViewModel.init(cells: [])
     
+    private var titleView = TitleView()
     @IBOutlet weak var table: UITableView!
     
     
@@ -41,6 +42,7 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
+        self.setupTopBars()
         
         // выбор создания ячейки через Xib или код:
         //self.table.register(UINib(nibName: "NewsfeedCell", bundle: nil), forCellReuseIdentifier: NewsfeedCell.reuseId)
@@ -50,6 +52,7 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         self.table.backgroundColor = .clear
         self.view.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         self.interactor?.makeRequest(request: Newsfeed.Model.Request.RequestType.getNewsfeed)
+        self.interactor?.makeRequest(request: .getUser)
     }
     
     func displayData(viewModel: Newsfeed.Model.ViewModel.ViewModelData) {
@@ -57,10 +60,20 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         case .displayNewsfeed(let feedViewModel):
             self.feedViewModel = feedViewModel
             self.table.reloadData()
+        case .displayUser(let userViewModel):
+            self.titleView.set(userViewModel: userViewModel)
         }
     }
     
+    private func setupTopBars() {
+        self.navigationController?.hidesBarsOnSwipe = true
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationItem.titleView = self.titleView
+    }
+    
 }
+
+
 
 // MARK: NewsfeedCodeCellDelegate
 extension NewsfeedViewController: NewsfeedCodeCellDelegate {
