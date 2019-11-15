@@ -26,7 +26,7 @@ final class GalleryCollectionView: UICollectionView, UICollectionViewDelegate, U
         showsHorizontalScrollIndicator = false
         
 //        if let rowLayout = collectionViewLayout as? RowLayout {
-//            rowLayout.delegate = self //TODO: просто на  let rowLayout = RowLayout() сделать?
+//            rowLayout.delegate = self
 //        }
     }
     

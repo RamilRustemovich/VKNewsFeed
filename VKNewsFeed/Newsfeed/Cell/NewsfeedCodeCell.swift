@@ -35,14 +35,6 @@ final class NewsfeedCodeCell: UITableViewCell {
         return view
     }()
     
-//    let postLabel: UILabel = {
-//       let lbl = UILabel()
-//        lbl.textColor = #colorLiteral(red: 0.227329582, green: 0.2323184013, blue: 0.2370472848, alpha: 1)
-//        lbl.numberOfLines = 0
-//        lbl.font = Constants.postLabelFont
-//        return lbl
-//    }()
-    
     let postLabel: UITextView = {
         let textView = UITextView()
         textView.font = Constants.postLabelFont
@@ -341,7 +333,7 @@ final class NewsfeedCodeCell: UITableViewCell {
         self.topView.trailingAnchor.constraint(equalTo: self.cardView.trailingAnchor, constant: -8).activate
         self.topView.heightAnchor.constraint(equalToConstant: Constants.topViewHeight).activate
          // postImageView constraint - calculating
-         //galleryCollectionView constraint - calculating
+         // galleryCollectionView constraint - calculating
          // postLabel constraint - calculating
          // bottomView constraint - calculating
     }
@@ -351,8 +343,8 @@ final class NewsfeedCodeCell: UITableViewCell {
         self.cardView.fillSuperview(padding: Constants.cardInsets)
     }
     
-    
     @objc private func moreTextButtonTouch() {
         self.delegate?.revealPost(for: self)
     }
+    
 }
