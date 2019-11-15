@@ -16,12 +16,18 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     
     var interactor: NewsfeedBusinessLogic?
     var router: (NSObjectProtocol & NewsfeedRoutingLogic)?
-    private var feedViewModel = FeedViewModel.init(cells: [])
+    private var feedViewModel = FeedViewModel.init(cells: [], footerTitle: nil)
     
-    private var titleView = TitleView()
     @IBOutlet weak var table: UITableView!
+    private var titleView = TitleView()
+    private lazy var footerView = FooterView()
+    private let refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        return refreshControl
+    }()
     
-    
+  
     // MARK: Setup
     private func setup() {
         let viewController        = self
@@ -37,19 +43,13 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     
     // MARK: Routing
     
-    
     // MARK: View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
+        self.setupTable()
         self.setupTopBars()
         
-        // выбор создания ячейки через Xib или код:
-        //self.table.register(UINib(nibName: "NewsfeedCell", bundle: nil), forCellReuseIdentifier: NewsfeedCell.reuseId)
-        self.table.register(NewsfeedCodeCell.self, forCellReuseIdentifier: NewsfeedCodeCell.reuseId)
-        
-        self.table.separatorStyle = .none
-        self.table.backgroundColor = .clear
         self.view.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         self.interactor?.makeRequest(request: Newsfeed.Model.Request.RequestType.getNewsfeed)
         self.interactor?.makeRequest(request: .getUser)
@@ -60,15 +60,42 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         case .displayNewsfeed(let feedViewModel):
             self.feedViewModel = feedViewModel
             self.table.reloadData()
+            self.refreshControl.endRefreshing()
+            self.footerView.setTitle(feedViewModel.footerTitle)
         case .displayUser(let userViewModel):
             self.titleView.set(userViewModel: userViewModel)
+        case .displayFooterLoader:
+            self.footerView.showLoader()
         }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView.contentOffset.y > scrollView.contentSize.height / 1.1 {
+            self.interactor?.makeRequest(request: .getNextBatch)
+        }
+    }
+    
+    
+    private func setupTable() {
+        self.table.contentInset.top = 8
+        // выбор создания ячейки через Xib или код:
+        //self.table.register(UINib(nibName: "NewsfeedCell", bundle: nil), forCellReuseIdentifier: NewsfeedCell.reuseId)
+        self.table.register(NewsfeedCodeCell.self, forCellReuseIdentifier: NewsfeedCodeCell.reuseId)
+        
+        self.table.separatorStyle = .none
+        self.table.backgroundColor = .clear
+        self.table.addSubview(self.refreshControl)
+        self.table.tableFooterView = footerView
     }
     
     private func setupTopBars() {
         self.navigationController?.hidesBarsOnSwipe = true
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationItem.titleView = self.titleView
+    }
+    
+    @objc private func refresh() {
+        self.interactor?.makeRequest(request: Newsfeed.Model.Request.RequestType.getNewsfeed)
     }
     
 }
